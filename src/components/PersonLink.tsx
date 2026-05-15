@@ -3,16 +3,15 @@ import { Person } from '../types';
 
 type Props = {
   person: Person;
-  parentName: string;
 };
 
-export const PersonLink = ({ person, parentName }: Props) => {
+export const PersonLink = ({ person }: Props) => {
   return (
     <NavLink
       to={`/people/${person.slug}`}
       className={person.sex === 'f' ? 'has-text-danger' : ''}
     >
-      {parentName}
+      {person.name}
     </NavLink>
   );
 };
