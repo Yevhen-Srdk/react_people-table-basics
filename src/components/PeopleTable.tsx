@@ -1,6 +1,7 @@
 import { NavLink, useParams } from 'react-router-dom';
 import { Person } from '../types';
 import { Loader } from './Loader';
+import { PersonLink } from './PersonLink';
 
 type Props = {
   people: Person[];
@@ -19,14 +20,7 @@ export const PeopleTable = ({ people, error, loading }: Props) => {
     const person = people.find(p => p.name === name);
 
     if (person) {
-      return (
-        <NavLink
-          to={`/people/${person.slug}`}
-          className={person.sex === 'f' ? 'has-text-danger' : ''}
-        >
-          {name}
-        </NavLink>
-      );
+      return <PersonLink person={person} parentName={name} />;
     }
 
     return name;
